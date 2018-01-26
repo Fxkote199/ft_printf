@@ -10,33 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+CC = gcc -c -Wall -Wextra -Werror
 
 SRC = ft_itoa_an.c modifier.c ft_atoi_ll.c ft_printf.c un_behavior.c ft_itoa_base.c ft_itoa_ui.c \
 		ft_char.c ft_check_str.c pointer.c width_prec.c convert_result_to_flag.c \
 		add_flag_to_struct.c printf_helper_1.c printf_helper_width_prec.c printf_helper_str_width_prec.c printf_utf.c \
 		convert_helper_1.c convert_helper_2.c printf_helper_2.c printf_helper_3.c mix_helper.c 
 
-FILE_O = objects/*.o
+OBJ =  $(SRC:%.c=%.o)
 
-all: $(NAME)
+all: $(addprefix ../objects/, $(OBJ))
 
-$(NAME): objectdir
-	@make -C ft_printf
-	@make -C libft
-	@ar rc $(NAME) $(FILE_O)
-
-objectdir:
-	@mkdir -p objects
-
+../objects/%.o: %.c
+	@$(CC) $< -I ../include -o $@
+	
 clean:
-	@make clean -C libft
-	@make clean -C ft_printf
-	@rm -rf objects
+	@rm -rf $(addprefix ../objects/, $(OBJ))
+	@echo ft_printf obj. deleted
 
 fclean: clean
-	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: clean all fclean re
+.PHONY: clean fclean all re

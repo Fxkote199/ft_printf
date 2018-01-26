@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFF_SIZE 32
 
 typedef	struct				s_list
 {
@@ -27,6 +28,7 @@ typedef	struct				s_list
 	int						pov;
 	int						cnt;
 }							t_list;
+int							get_next_line(const int fd, char **line);
 int							ft_atoi(const char *str);
 int							ft_tolower(int c);
 int							ft_memcmp(const void *s1, const void *s2, size_t n);
