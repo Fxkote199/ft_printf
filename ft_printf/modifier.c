@@ -43,8 +43,8 @@ int		ft_check_mod_4(t_print *pr, va_list ap, int type, int c)
 {
 	if (type == 4)
 	{
-		(S || SRC_L) ? (pr->wchar = (int*)va_arg(ap, void*)) : 0;
-		pr->st_arg = (S || SRC_L) ? ft_strdup("\0") : NO_UNI;
+		((S || SRC_L) && MB_CUR_MAX == 4) ? (pr->wchar = (int*)va_arg(ap, void*)) : 0;
+		pr->st_arg = ((S || SRC_L) && MB_CUR_MAX == 4) ? ft_strdup("\0") : NO_UNI;
 		c++;
 	}
 	else if (type == 5)
