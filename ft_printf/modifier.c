@@ -105,10 +105,10 @@ int		ft_check_mod(t_print *pr, va_list ap, int type, int i)
 	if (type == 6)
 	{
 		pr->st_arg = P;
-		while (pr->st_arg[i])
+		while (pr->st_arg[++i])
 		{
 			pr->st_arg[i] = ft_tolower(pr->st_arg[i]);
-			i++;
+			//i++;
 		}
 	}
 	else if (ft_strchr(pr->src_t, 'z'))
