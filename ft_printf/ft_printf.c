@@ -63,7 +63,10 @@ int		ft_all_type(t_print *pr, va_list ap, char **str, int *c)
 	{
 		pr->ct = cnt;
 		if ((*str)[cnt] == '%' && (*str)[cnt + 1] == '%')
+		{
 			ft_pre_check_str(&(*str)[cnt++], &(*c));
+			break ;
+		}
 		if (ft_variant_nb(&(*str), ap, &(*c), pr))
 			return (cnt);
 		if (ft_variant_str(&(*str), ap, &(*c), pr))
