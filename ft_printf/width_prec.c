@@ -97,14 +97,7 @@ void	ft_only_precision(t_print *pr, int type, int i, int c)
 	ptrdiff_t	len;
 
 	if (ft_strchr(pr->src_t, '*'))
-	{
-		if (c > 0)
-			precis = (pr->prec > 0) ? pr->prec : PREC;
-		else if (!c && pr->cp_star < 0)
-			precis = 0;
-		else if (!c && pr->star >= 0)
-			precis = pr->star;
-	}
+		precis = ft_what_precis(pr, c);
 	else
 		precis = PREC;
 	len = (type != 6) ? ft_strlen(pr->st_arg) : (ft_strlen(pr->st_arg) - 2);

@@ -49,7 +49,8 @@ int		ft_check_mod_4(t_print *pr, va_list ap, int type, int c)
 	}
 	else if (type == 5)
 	{
-		if ((ft_strchr(pr->src_t, 'C') || ft_strchr(pr->src_t, 'l')) && MB_CUR_MAX == 4)
+		if ((ft_strchr(pr->src_t, 'C') || ft_strchr(pr->src_t, 'l'))\
+		&& MB_CUR_MAX == 4)
 		{
 			pr->utf = (unsigned int)va_arg(ap, void*);
 			pr->st_arg = ft_strdup("\0");

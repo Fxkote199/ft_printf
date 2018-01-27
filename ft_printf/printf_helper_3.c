@@ -24,7 +24,7 @@ int		ft_pre_check_str(char *str, int *c, t_print *pr)
 	while ((str)[i])
 	{
 		if (str[i] != '%' && pr->it)
-			break;
+			break ;
 		if ((str)[i] == '%' && (str)[i + 1] != '%' && (str)[i + 1] != '\0')
 			break ;
 		else if ((str)[i] == '%' && (str)[i + 1] == '%')

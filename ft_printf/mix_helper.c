@@ -101,3 +101,14 @@ void	ft_only_width_1(t_print *pr, ptrdiff_t width, ptrdiff_t len, char **arr)
 		ft_strdel(&(*arr));
 	}
 }
+
+int		ft_what_precis(t_print *pr, int c)
+{
+	if (c > 0)
+		return ((pr->prec > 0) ? pr->prec : PREC);
+	else if (!c && pr->cp_star < 0)
+		return (0);
+	else if (!c && pr->star >= 0)
+		return (pr->star);
+	return (0);
+}
