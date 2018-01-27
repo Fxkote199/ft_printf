@@ -26,9 +26,7 @@ int		ft_pre_check_str(char *str, int *c, t_print *pr)
 		if (str[i] != '%' && pr->it)
 			break;
 		if ((str)[i] == '%' && (str)[i + 1] != '%' && (str)[i + 1] != '\0')
-		{
 			break ;
-		}
 		else if ((str)[i] == '%' && (str)[i + 1] == '%')
 			i++;
 		else if ((str)[i] == '%' && !(str)[i + 1])
@@ -40,9 +38,7 @@ int		ft_pre_check_str(char *str, int *c, t_print *pr)
 		ch++;
 	}
 	*c += ch;
-	if (q < 0)
-		return (-1);
-	return (i);
+	return ((q < 0) ? -1 : i);
 }
 
 int		ft_variant_str(char **str, va_list ap, int *c, t_print *pr)
