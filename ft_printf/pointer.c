@@ -38,7 +38,7 @@ void	ft_pointer_1(t_print *pr, va_list ap, int type)
 	if (ft_strchr(pr->src_t, '.') || ft_number(pr))
 		ft_check_width_precision(pr, type, ap);
 	else if (ft_strchr(pr->src_t, '.'))
-		ft_only_precision(pr, type, 0);
+		ft_only_precision(pr, type, 0, 0);
 }
 
 void	ft_pointer(t_print *pr, va_list ap, int type)

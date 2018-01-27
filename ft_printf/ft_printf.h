@@ -6,13 +6,13 @@
 /*   By: kmykhail <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 13:05:01 by kmykhail          #+#    #+#             */
-/*   Updated: 2017/12/17 14:23:17 by kmykhail         ###   ########.fr       */
+/*   Updated: 2018/01/27 18:24:02 by kmykhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
