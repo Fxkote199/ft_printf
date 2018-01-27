@@ -64,7 +64,8 @@ int		ft_all_type(t_print *pr, va_list ap, char **str, int *c)
 		pr->ct = cnt;
 		if ((*str)[cnt] == '%' && (*str)[cnt + 1] == '%')
 		{
-			ft_pre_check_str(&(*str)[cnt++], &(*c));
+			ft_pre_check_str(&(*str)[cnt++], &(*c), pr);
+			pr->it++;
 			break ;
 		}
 		if (ft_variant_nb(&(*str), ap, &(*c), pr))
@@ -85,7 +86,7 @@ size_t	ft_check_per(va_list ap, char *str)
 
 	pr = malloc(sizeof(t_print));
 	ft_list_null(pr, &c, &cnt);
-	pr->it = CHECK_STR(str, &c);
+	pr->it = CHECK_STR(str, &c, pr);
 	if (c < 0 || pr->it < 0)
 		return (c);
 	while (str[pr->it])

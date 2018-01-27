@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #define NO_DIG		!ft_isdigit(pr->src_t[0])
-#define JUST_PR_N	ft_only_precision(pr, type, i)
+#define JUST_PR_N	ft_only_precision(pr, type, i, 0)
 #define JUST_PR_STR	ft_only_precision_str(pr)
 #define JUST_W_P_N	ft_width_precision(pr, type, ap)
 #define JUST_W_P_S	ft_width_precision_str(pr)
@@ -91,13 +91,22 @@ void	ft_only_width(t_print *pr)
 		ft_only_width_1(pr, width, len, &arr);
 }
 
-void	ft_only_precision(t_print *pr, int type, int i)
+void	ft_only_precision(t_print *pr, int type, int i, int c)
 {
 	ptrdiff_t	precis;
 	ptrdiff_t	len;
 
-	precis = (ft_strchr(pr->src_t, '*') && pr->cp_star > 0) ? pr->star : PREC;
-	(pr->ch_star && pr->prec) ? (precis = pr->prec) : 0;
+	if (ft_strchr(pr->src_t, '*'))
+	{
+		if (c > 0)
+			precis = (pr->prec > 0) ? pr->prec : PREC;
+		else if (!c && pr->cp_star < 0)
+			precis = 0;
+		else if (!c && pr->star >= 0)
+			precis = pr->star;
+	}
+	else
+		precis = PREC;
 	len = (type != 6) ? ft_strlen(pr->st_arg) : (ft_strlen(pr->st_arg) - 2);
 	if (type == 6 && !ft_strcmp(pr->st_arg, "0x0") && !precis)
 		pr->result = ft_strdup("0x");

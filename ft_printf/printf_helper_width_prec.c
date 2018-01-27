@@ -43,11 +43,11 @@ void	ft_w_p_1(t_print *pr, ptrdiff_t width, ptrdiff_t precis, int type)
 
 	i = 0;
 	if (width <= precis && precis >= pr->len)
-		ft_only_precision(pr, type, i);
+		ft_only_precision(pr, type, i, 1);
 	else if (width > precis && precis > pr->len)
 	{
 		width -= (ft_strchr(pr->st_arg, '-')) ? 1 : 0;
-		ft_only_precision(pr, type, i);
+		ft_only_precision(pr, type, i, 0);
 		if (width > precis)
 		{
 			width -= precis;

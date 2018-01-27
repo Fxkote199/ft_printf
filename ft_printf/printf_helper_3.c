@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_pre_check_str(char *str, int *c)
+int		ft_pre_check_str(char *str, int *c, t_print *pr)
 {
 	int	i;
 	int	ch;
@@ -23,8 +23,12 @@ int		ft_pre_check_str(char *str, int *c)
 	q = 0;
 	while ((str)[i])
 	{
+		if (str[i] != '%' && pr->it)
+			break;
 		if ((str)[i] == '%' && (str)[i + 1] != '%' && (str)[i + 1] != '\0')
+		{
 			break ;
+		}
 		else if ((str)[i] == '%' && (str)[i + 1] == '%')
 			i++;
 		else if ((str)[i] == '%' && !(str)[i + 1])
@@ -34,8 +38,6 @@ int		ft_pre_check_str(char *str, int *c)
 		}
 		ft_putchar((str)[i++]);
 		ch++;
-		if (i)
-			break ;
 	}
 	*c += ch;
 	if (q < 0)

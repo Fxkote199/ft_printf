@@ -55,7 +55,14 @@ void	ft_only_precision_str(t_print *pr)
 	int			*arr;
 
 	i = 0;
-	precis = (ft_strchr(pr->src_t, '*')) ? pr->star : PREC;
+	if (ft_strchr(pr->src_t, '*'))
+	{
+		while (pr->src_t[i] != '.' && pr->src_t[i])
+			i++;
+		precis = (ft_isdigit(pr->src_t[i + 1])) ? PREC : pr->star;
+	}
+	else
+		precis = PREC;
 	len = (pr->wchar) ? ft_len_byte(pr->wchar) : ft_strlen(pr->st_arg);
 	if (precis == 0)
 	{
