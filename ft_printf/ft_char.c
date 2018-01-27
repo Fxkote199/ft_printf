@@ -103,7 +103,7 @@ void	ft_char(t_print *pr, va_list ap, int type, int i)
 		while (uf->uf_mass[a] != '\0')
 			ft_putchar(uf->uf_mass[a++]);
 	}
-	else if (type == 4 && (SRC_S || SRC_L) && MB_CUR_MAX == 4)
+	else if (type == 4 && (SRC_S || SRC_L))
 	{
 		if (ft_analys_str(pr, i, a, uf))
 			return ;
